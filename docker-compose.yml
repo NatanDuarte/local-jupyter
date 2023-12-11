@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  jupyter:
+    image: jupyter/base-notebook
+    command:
+      [
+        "start-notebook.sh",
+        "--NotebookApp.token=${JUPYTER_TOKEN}",
+        "--NotebookApp.disable_check_xsrf=True"
+      ]
+    ports:
+      - ${APP_PORT}:8888
+    volumes:
+      - C:\jupyter:/home/jovyan/work
+    restart: always
